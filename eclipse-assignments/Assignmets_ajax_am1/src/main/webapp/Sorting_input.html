@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Integer sorting</title>
+</head>
+<script type="text/javascript">
+	function sorting(){
+		const inputNum = document.getElementById('number').value;
+		let num = inputNum.split(',').map(num => parseInt(num.trim(),10));
+		num.sort((a,b)=>b-a);
+		document.getElementById('results').textContent = "Sorted numbers (descending order): "+num.join(', '); 
+	}
+</script>
+<body>
+	<h2>Sort the number in Descending order !</h2>
+	<form onsubmit=" event.preventDefault(); sorting();">
+	Enter number :
+	<input type='text' id='number' placeholder='enter int eg: 2,3,4,5,5'>
+	<button type='submit'>Sort</button>
+	</form>
+	<p id='results'></p>
+</body>
+</html>

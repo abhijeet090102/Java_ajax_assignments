@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	function loadTextFile(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.open('GET','aaa.txt',true);
+		xhttp.onload = function(){
+			if(xhttp.status === 200){
+				document.getElementById("results").innerText = xhttp.responseText;
+			} else {
+                // If an error occurred, display a message
+                document.getElementById("results").innerText = "Error loading the file.";
+            }
+		};
+        xhttp.onerror = function() {
+            document.getElementById("results").innerText = "Network Error!";
+        };
+
+        xhttp.send();
+	}
+
+</script>
+<body>
+	<h2>XML Http To take file and Show text file data !</h2>
+	<button onclick='loadTextFile()'>Load text File</button>
+	<p id='results'>
+
+</body>
+</html>

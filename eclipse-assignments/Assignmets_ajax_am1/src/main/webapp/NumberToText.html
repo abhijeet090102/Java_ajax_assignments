@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	function wordConvert(){
+		const num = document.getElementById('number').value;
+        const results = document.getElementById('results');
+        
+        if (isNaN(num) || num === '') {
+            results.textContent = "Not a Number";
+            return;
+        }
+
+        let number = parseInt(num, 10);
+        if (number < 0 || number > 999) {
+            results.textContent = "Out of range";
+            return;
+        }
+
+        const ones = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", 
+                      "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", 
+                      "Nineteen"];
+        const tens = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+
+        let words = '';
+        
+        if (number === 0) {
+            words = 'Zero';
+        } else {
+            if (number >= 100) {
+                words += ones[Math.floor(number / 100)] + " Hundred ";
+                number %= 100;
+            }
+            if (number >= 20) {
+                words += tens[Math.floor(number / 10)] + " ";
+                number %= 10;
+            }
+            if (number > 0) {
+                words += ones[number] + " ";
+            }
+        }
+
+        results.textContent = words.trim();
+	}
+</script>
+<body>
+	<h2>Number to Word !</h2>
+    <form onsubmit="event.preventDefault(); wordConvert();">
+        Enter number:
+        <input type="text" id="number" placeholder="Enter the number">
+        <button type="submit">Convert</button>
+    </form>
+    <p id="results"></p> 
+</body>
+</html>

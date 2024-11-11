@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        select {
+            font-size: 16px;
+            padding: 8px;
+        }
+
+        #capital {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+	const capitals = {
+			'India':"Delhi",
+			"Japan":"Tokyo",
+			"Nepal":"Kathmandu",
+			"Sri lanka":"Sri Jayawardenepura Kotte"
+	}
+	 function countryCapital() {
+         const country = document.getElementById('country').value;
+         const capitalSpan = document.getElementById("capitalShow");
+         
+         if (country) {
+             capitalSpan.textContent = "Capital: " + capitals[country];
+         } else {
+             capitalSpan.textContent = "Select a country to see its capital.";
+         }
+     }
+
+
+</script>
+<body>
+	<h2>User selection data</h2>
+	<select id='country' onchange="countryCapital()">
+		<option value=''>--Select a Country</option>
+		<option value='India'>India</option>
+		<option value='Japan'>Japan</option>
+		<option value='Nepal'>Nepal</option>
+		<option value='Sri lanka'>Sri lanka</option>
+	</select>
+	<span id='capitalShow' class='capital'>Selected Country Capital .</span>
+
+</body>
+</html>
